@@ -1,0 +1,129 @@
+.sidebar {
+  position: fixed;
+  left: 0;
+  top: 56px;
+  height: calc(100vh - 56px);
+  background-color: var(--bg-primary);
+  border-right: 1px solid var(--border-color);
+  transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+  z-index: 50;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--bg-hover) transparent;
+}
+
+.sidebar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+  background-color: var(--bg-hover);
+  border-radius: 3px;
+}
+
+.sidebar-open {
+  width: 240px;
+  transform: translateX(0);
+}
+
+.sidebar-closed {
+  width: 72px;
+  transform: translateX(0);
+}
+
+.sidebar-content {
+  padding: 12px 0;
+}
+
+.sidebar-section {
+  padding: 8px 0;
+}
+
+.sidebar-item {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 10px 24px;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+  min-height: 40px;
+}
+
+.sidebar-item:hover {
+  background-color: var(--bg-hover);
+}
+
+.sidebar-item:hover::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background-color: var(--youtube-red);
+}
+
+.sidebar-label {
+  font-size: 14px;
+  font-weight: 400;
+  white-space: nowrap;
+  transition: opacity 0.2s ease;
+}
+
+.sidebar-closed .sidebar-label {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.sidebar-closed .sidebar-item {
+  justify-content: center;
+  padding: 10px;
+  gap: 0;
+}
+
+.sidebar-title {
+  padding: 8px 24px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: opacity 0.2s ease;
+}
+
+.sidebar-closed .sidebar-title {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.sidebar-divider {
+  height: 1px;
+  background-color: var(--border-color);
+  margin: 12px 24px;
+  transition: margin 0.2s ease;
+}
+
+.sidebar-closed .sidebar-divider {
+  margin: 12px 16px;
+}
+
+.sidebar-closed .sidebar-section {
+  padding: 4px 0;
+}
+
+@media (max-width: 1024px) {
+  .sidebar-closed {
+    transform: translateX(-100%);
+    width: 240px;
+  }
+  
+  .sidebar-open {
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
+  }
+}
